@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { ExtraOptions, RouterModule } from '@angular/router';
+
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
-import { NxWelcomeComponent } from './nx-welcome.component';
+
+const options: ExtraOptions = {
+  useHash: false,
+  scrollPositionRestoration: 'top',
+};
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
-  ],
-  providers: [],
+  declarations: [AppComponent],
+  imports: [BrowserModule, RouterModule.forRoot(appRoutes, options)],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
